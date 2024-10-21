@@ -11,6 +11,7 @@
 1. Create .env file in root of the project with variable PORT (for example `PORT=4000`);
 1. Run `npm run start:dev` to start the development mode;
 1. Run `npm run start:prod` to start the production mode.
+1. Run `npm run start:multi` to start the multi mode.
 
 ## Requests:
 

@@ -9,6 +9,7 @@
   "scripts": {
     "start:dev": "nodemon",
     "start:prod": "webpack --mode=production --node-env=production && node dist/bundle.js",
+    "start:multi": "ts-node src/scaled-server.ts",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
   },
