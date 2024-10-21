@@ -14,16 +14,20 @@ export const addNewUser = async (
   });
 
   request.on("end", async () => {
-    const body = JSON.parse(data);
+    try {
+      const body = JSON.parse(data);
 
-    if (!isUserData(body)) {
-      generateResponse(400, Message.INVALID_DATA, response);
+      if (!isUserData(body)) {
+        generateResponse(400, Message.INVALID_DATA, response);
 
-      return;
+        return;
+      }
+
+      const newUser: User = db.addUser(body);
+
+      generateResponse(201, newUser, response);
+    } catch (error) {
+      generateResponse(500, Message.SERVER_ERROR, response);
     }
-
-    const newUser: User = db.addUser(body);
-
-    generateResponse(201, newUser, response);
   });
 };

@@ -15,25 +15,29 @@ export const updateUser = async (
   });
 
   request.on("end", async () => {
-    const body = JSON.parse(data);
+    try {
+      const body = JSON.parse(data);
 
-    const preparedUser = {
-      username: body.username || user.username,
-      age: body.age || user.age,
-      hobbies: body.hobbies || user.hobbies,
-    };
+      const preparedUser = {
+        username: body.username || user.username,
+        age: body.age || user.age,
+        hobbies: body.hobbies || user.hobbies,
+      };
 
-    if (!isUserData(preparedUser)) {
-      generateResponse(400, Message.INVALID_DATA, response);
+      if (!isUserData(preparedUser)) {
+        generateResponse(400, Message.INVALID_DATA, response);
 
-      return;
+        return;
+      }
+
+      const updatedUser: User = db.updateUser({
+        id: user.id,
+        ...preparedUser,
+      });
+
+      generateResponse(200, updatedUser, response);
+    } catch (error) {
+      generateResponse(500, Message.SERVER_ERROR, response);
     }
-
-    const updatedUser: User = db.updateUser({
-      id: user.id,
-      ...preparedUser,
-    });
-
-    generateResponse(200, updatedUser, response);
   });
 };

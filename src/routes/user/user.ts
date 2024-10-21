@@ -28,7 +28,7 @@ export const userRoute = async (
 
       break;
     case Method.DELETE:
-      generateResponse(204, Message.DELETED, response);
+      generateResponse(204, db.deleteUser(userId), response);
 
       break;
     default:

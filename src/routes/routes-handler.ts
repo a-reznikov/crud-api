@@ -9,33 +9,37 @@ export const handleRoutes = async (
   request: IncomingMessage,
   response: ServerResponse
 ) => {
-  const { url } = request;
+  try {
+    const { url } = request;
 
-  if (!url) {
-    generateResponse(404, Message.NOT_FOUND, response);
-
-    return;
-  }
-
-  if (url.startsWith(Route.USER_BY_ID)) {
-    const [, userId] = url.split(Route.USER_BY_ID);
-
-    if (isValidUuid(userId)) {
-      await userRoute(request, response, userId);
+    if (!url) {
+      generateResponse(404, Message.NOT_FOUND, response);
 
       return;
     }
 
-    generateResponse(400, Message.INVALID_USER_ID, response);
+    if (url.startsWith(Route.USER_BY_ID)) {
+      const [, userId] = url.split(Route.USER_BY_ID);
 
-    return;
+      if (isValidUuid(userId)) {
+        await userRoute(request, response, userId);
+
+        return;
+      }
+
+      generateResponse(400, Message.INVALID_USER_ID, response);
+
+      return;
+    }
+
+    if (url === Route.USERS) {
+      await usersRoute(request, response);
+
+      return;
+    }
+
+    generateResponse(404, Message.NOT_FOUND, response);
+  } catch (error) {
+    generateResponse(500, Message.SERVER_ERROR, response);
   }
-
-  if (url === Route.USERS) {
-    await usersRoute(request, response);
-
-    return;
-  }
-
-  generateResponse(404, Message.NOT_FOUND, response);
 };

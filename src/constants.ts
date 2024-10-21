@@ -15,5 +15,5 @@ export enum Message {
   NOT_FOUND_USER = `Unfortunately, there is no such User in the database.`,
   INVALID_DATA = `Please make sure that you have entered the correct User data.`,
   INVALID_USER_ID = `Please make sure that you have entered the correct UserID.`,
-  DELETED = `User has been deleted.`,
+  SERVER_ERROR = `Oops. Something bad happened on server side.`,
 }
