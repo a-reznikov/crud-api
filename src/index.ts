@@ -1,6 +1,8 @@
 import { createServer } from "http";
-import "dotenv/config";
+import { config } from "dotenv";
 import { handleRoutes } from "./routes";
+
+config();
 
 const PORT = process.env.PORT ?? 3000;
 
