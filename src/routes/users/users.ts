@@ -2,7 +2,7 @@ import { IncomingMessage, ServerResponse } from "http";
 import { db } from "../../db";
 import { generateResponse } from "../../helpers";
 import { Message, Method } from "../../constants";
-import { usersPost } from "./post";
+import { addNewUser } from "./addNewUser";
 
 export const usersRoute = async (
   request: IncomingMessage,
@@ -14,7 +14,8 @@ export const usersRoute = async (
 
       break;
     case Method.POST:
-      await usersPost(request, response);
+      await addNewUser(request, response);
+
       break;
     case Method.PUT:
       break;

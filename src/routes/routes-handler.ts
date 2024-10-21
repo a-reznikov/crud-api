@@ -22,10 +22,11 @@ export const handleRoutes = async (
 
     if (isValidUuid(userId)) {
       await userRoute(request, response, userId);
-      console.log("Valid", userId);
+
+      return;
     }
 
-    console.log("Invalid", userId);
+    generateResponse(400, Message.INVALID_USER_ID, response);
 
     return;
   }

@@ -14,4 +14,5 @@ export enum Message {
   NOT_FOUND = `Unfortunately, we do not have information on your request.`,
   NOT_FOUND_USER = `Unfortunately, there is no such User in the database.`,
   INVALID_DATA = `Please make sure that you have entered the correct User data.`,
+  INVALID_USER_ID = `Please make sure that you have entered the correct UserID.`,
 }

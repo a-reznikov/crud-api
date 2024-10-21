@@ -3,7 +3,7 @@ import { generateResponse, isUserData } from "../../helpers";
 import { Message } from "../../constants";
 import { User, db } from "../../db";
 
-export const usersPost = async (
+export const addNewUser = async (
   request: IncomingMessage,
   response: ServerResponse
 ) => {

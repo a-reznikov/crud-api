@@ -18,3 +18,15 @@ export const addUser = (userData: UserData) => {
 
   return newUser;
 };
+
+export const updateUser = (preparedUser: User) => {
+  const userIndex = users.findIndex((user) => user.id === preparedUser.id);
+
+  if (userIndex < 0) {
+    return undefined;
+  }
+
+  users[userIndex] = preparedUser;
+
+  return users[userIndex];
+};
