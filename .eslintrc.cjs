@@ -29,6 +29,7 @@ module.exports = {
       '@typescript-eslint/no-inferrable-types': 'off',
       '@typescript-eslint/no-unnecessary-type-assertion': 'error',
       "@typescript-eslint/quotes": "off",
+      "@typescript-eslint/comma-dangle": "off"
     }
   }]
 };

@@ -1,13 +1,30 @@
 import { createServer } from "http";
-import { env } from "process";
-import { config } from "dotenv";
+import "dotenv/config";
+import { Message, Method } from "./constants";
+import { get } from "./methods";
+import { generateResponse } from "./helpers";
 
-config();
-
-const PORT = env.PORT ?? 3000;
+const PORT = process.env.PORT ?? 3000;
 
 export const server = createServer(async (request, response): Promise<void> => {
-  console.log(request);
+  switch (request.method) {
+    case Method.GET:
+      get(request, response);
+      break;
+
+    case Method.POST:
+      break;
+
+    case Method.PUT:
+      break;
+
+    case Method.DELETE:
+      break;
+
+    default:
+      // Send response for requests with no other response
+      generateResponse(404, Message.NOT_FOUND, response);
+  }
 });
 
 server.listen(PORT, () => {
