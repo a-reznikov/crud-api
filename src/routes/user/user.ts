@@ -1,15 +1,15 @@
 import { IncomingMessage, ServerResponse } from "http";
-import { generateResponse } from "../helpers";
-import { getUserById } from "../db";
-import { Message, Method } from "../constants";
-import { UserId } from "../types";
+import { db } from "../../db";
+import { generateResponse } from "../../helpers";
+import { Message, Method } from "../../constants";
+import { UserId } from "../../db/types";
 
-export const userById = async (
+export const userRoute = async (
   request: IncomingMessage,
   response: ServerResponse,
   userId: UserId
 ) => {
-  const user = getUserById(userId);
+  const user = db.getUserById(userId);
 
   switch (request.method) {
     case Method.GET:

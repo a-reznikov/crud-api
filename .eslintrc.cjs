@@ -15,7 +15,9 @@ module.exports = {
     'import/prefer-default-export': 'off',
     indent: 'off',
     '@typescript-eslint/indent': ['error', 2],
-    "implicit-arrow-linebreak": ["off", "beside"]
+    "implicit-arrow-linebreak": ["off", "beside"],
+    "operator-linebreak": ["off", "none"],
+    "object-curly-newline": ["off", "always"]
   },
   overrides: [{
     files: "**/*.ts",
@@ -26,7 +28,6 @@ module.exports = {
     },
     plugins: ["@typescript-eslint"],
     rules: {
-      '@typescript-eslint/no-explicit-any': 'error',
       '@typescript-eslint/no-inferrable-types': 'off',
       '@typescript-eslint/no-unnecessary-type-assertion': 'error',
       "@typescript-eslint/quotes": "off",

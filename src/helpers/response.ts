@@ -1,5 +1,5 @@
 import { ServerResponse } from "http";
-import { User } from "../types";
+import { User } from "../db/types";
 
 export const generateResponse = async (
   status: number,

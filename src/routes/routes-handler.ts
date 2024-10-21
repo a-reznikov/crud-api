@@ -2,7 +2,8 @@ import { IncomingMessage, ServerResponse } from "http";
 import { validate as isValidUuid } from "uuid";
 import { Message, Route } from "../constants";
 import { generateResponse } from "../helpers/response";
-import { userById } from "./user-by-id";
+import { userRoute } from "./user/user";
+import { usersRoute } from "./users/users";
 
 export const handleRoutes = async (
   request: IncomingMessage,
@@ -20,7 +21,7 @@ export const handleRoutes = async (
     const [, userId] = url.split(Route.USER_BY_ID);
 
     if (isValidUuid(userId)) {
-      await userById(request, response, userId);
+      await userRoute(request, response, userId);
       console.log("Valid", userId);
     }
 
@@ -30,7 +31,7 @@ export const handleRoutes = async (
   }
 
   if (url === Route.USERS) {
-    console.log(Route.USERS);
+    await usersRoute(request, response);
 
     return;
   }
