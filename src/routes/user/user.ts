@@ -28,6 +28,8 @@ export const userRoute = async (
 
       break;
     case Method.DELETE:
+      generateResponse(204, Message.DELETED, response);
+
       break;
     default:
       generateResponse(404, Message.NOT_FOUND, response);

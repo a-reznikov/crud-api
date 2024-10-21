@@ -29,16 +29,10 @@ export const updateUser = async (
       return;
     }
 
-    const updatedUser: User | undefined = db.updateUser({
+    const updatedUser: User = db.updateUser({
       id: user.id,
       ...preparedUser,
     });
-
-    if (!updatedUser) {
-      generateResponse(404, Message.NOT_FOUND_USER, response);
-
-      return;
-    }
 
     generateResponse(200, updatedUser, response);
   });

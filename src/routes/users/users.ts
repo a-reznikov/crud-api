@@ -17,10 +17,7 @@ export const usersRoute = async (
       await addNewUser(request, response);
 
       break;
-    case Method.PUT:
-      break;
-    case Method.DELETE:
-      break;
+
     default:
       generateResponse(404, Message.NOT_FOUND, response);
   }

@@ -17,7 +17,10 @@ module.exports = {
     '@typescript-eslint/indent': ['error', 2],
     "implicit-arrow-linebreak": ["off", "beside"],
     "operator-linebreak": ["off", "none"],
-    "object-curly-newline": ["off", "always"]
+    "object-curly-newline": ["off", "always"],
+    "import/no-mutable-exports": "off",
+    "no-confusing-arrow": ["off", { "allowParens": false }],
+    "function-paren-newline": ["off", "never"]
   },
   overrides: [{
     files: "**/*.ts",

@@ -1,7 +1,7 @@
 import { v4 as uuidv4 } from "uuid";
 import { User, UserData, UserId } from "./types";
 
-export const users: User[] = [];
+export let users: User[] = [];
 
 export const getAllUsers = () => users;
 
@@ -20,13 +20,15 @@ export const addUser = (userData: UserData) => {
 };
 
 export const updateUser = (preparedUser: User) => {
-  const userIndex = users.findIndex((user) => user.id === preparedUser.id);
+  users = users.map((user) =>
+    user.id === preparedUser.id ? preparedUser : user
+  );
 
-  if (userIndex < 0) {
-    return undefined;
-  }
+  return preparedUser;
+};
 
-  users[userIndex] = preparedUser;
+export const deleteUser = (userId: UserId) => {
+  users = users.filter((user) => user.id !== userId);
 
-  return users[userIndex];
+  return users;
 };
