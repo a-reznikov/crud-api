@@ -15,6 +15,7 @@ module.exports = {
     'import/prefer-default-export': 'off',
     indent: 'off',
     '@typescript-eslint/indent': ['error', 2],
+    "implicit-arrow-linebreak": ["off", "beside"]
   },
   overrides: [{
     files: "**/*.ts",

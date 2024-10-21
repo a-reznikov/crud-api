@@ -1,7 +1,7 @@
 import { ServerResponse } from "http";
 import { User } from "../types";
 
-export const generateResponse = (
+export const generateResponse = async (
   status: number,
   data: string | User | User[],
   response: ServerResponse
